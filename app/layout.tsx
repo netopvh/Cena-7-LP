@@ -21,18 +21,24 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID;
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: "Cena7",
-    template: "%s | Cena7",
+    default: "Sofisticação em móveis sob medida na Grande Florianópolis | Cena 7",
+    template: "%s | Cena 7",
   },
   description:
-    "Base otimizada para a futura landing page da Cena7, pronta para SEO e instrumentação.",
+    "Cozinhas, closets e painéis sob medida com ferragens de alta performance. Atendimento próximo, cronograma claro e pós-instalação garantida. Cena 7: qualidade, prazo e elegância para seu projeto.",
   applicationName: "Cena7",
   keywords: [
-    "Cena7",
-    "landing page",
-    "experiência digital",
-    "marketing",
-    "tecnologia",
+    "Cena 7",
+    "móveis sob medida",
+    "móveis planejados",
+    "acabamento premium",
+    "montagem profissional",
+    "garantia 5 anos",
+    "São José SC",
+    "Grande Florianópolis",
+    "cozinhas planejadas",
+    "closets planejados",
+    "painéis de living",
   ],
   authors: [{ name: "Cena7" }],
   creator: "Cena7",
@@ -46,19 +52,19 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Cena7",
+    title: "Sofisticação em móveis sob medida na Grande Florianópolis | Cena 7",
     description:
-      "Estrutura inicial da landing page da Cena7 com foco em SEO e mensuração.",
+      "Cozinhas, closets e painéis sob medida com ferragens de alta performance. Atendimento próximo, cronograma claro e pós-instalação garantida.",
     url: "/",
-    siteName: "Cena7",
+    siteName: "Cena 7",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cena7",
+    title: "Sofisticação em móveis sob medida na Grande Florianópolis | Cena 7",
     description:
-      "Estrutura inicial da landing page da Cena7 com foco em SEO e mensuração.",
+      "Cozinhas, closets e painéis sob medida com ferragens de alta performance. Atendimento próximo, cronograma claro e pós-instalação garantida.",
   },
   robots: {
     index: true,

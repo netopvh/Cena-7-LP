@@ -1,5 +1,24 @@
+ "use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+
+const WHATSAPP_URL =
+  "https://wa.me/5548991628079?text=Gostaria%20de%20informa%C3%A7%C3%B5es..";
+
+const trackWhatsAppClick = () => {
+  if (typeof window === "undefined") return;
+  const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void })
+    .gtag;
+  gtag?.("event", "whatsapp_click", {
+    event_category: "engagement",
+    event_label: "whatsapp_cta",
+  });
+};
+
+const handleWhatsAppClick = () => {
+  trackWhatsAppClick();
+};
 
 const promiseBand = [
   { title: "Seu projeto sob medida", text: "Design, corte e ferragens alinhados ao seu espaço." },
@@ -65,7 +84,13 @@ export default function Home() {
               acabamento premium e montagem profissional em São José e região.
             </p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryCta} href="#contato">
+              <a
+                className={styles.primaryCta}
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleWhatsAppClick}
+              >
                 Falar no WhatsApp
               </a>
               <a className={styles.secondaryCta} href="#portfolio">
@@ -130,7 +155,13 @@ export default function Home() {
             </div>
           ))}
         </div>
-        <a className={styles.primaryCta} href="#contato">
+        <a
+          className={styles.primaryCta}
+          href={WHATSAPP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={handleWhatsAppClick}
+        >
           Quero um móvel de qualidade
         </a>
       </section>
@@ -150,7 +181,13 @@ export default function Home() {
             atendimento próximo, montagem profissional e garantia estendida.
           </p>
           <div className={styles.heroActions}>
-            <a className={styles.primaryCta} href="#contato">
+            <a
+              className={styles.primaryCta}
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleWhatsAppClick}
+            >
               Quero falar com um especialista
             </a>
           </div>
@@ -196,7 +233,13 @@ export default function Home() {
             claras e entrega combinada.
           </p>
           <div className={styles.heroActions}>
-            <a className={styles.primaryCta} href="#contato">
+            <a
+              className={styles.primaryCta}
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleWhatsAppClick}
+            >
               Falar com um especialista
             </a>
             <a className={styles.secondaryCta} href="#portfolio">
@@ -206,7 +249,7 @@ export default function Home() {
         </div>
         <div className={styles.finalInfo}>
           <p className={styles.finalLabel}>Telefone/WhatsApp</p>
-          <p className={styles.finalValue}>48 99999-9999</p>
+          <p className={styles.finalValue}>(48) 99162-8079</p>
           <p className={styles.finalLabel}>Atendimento</p>
           <p className={styles.finalValue}>São José - SC e região</p>
         </div>

@@ -1,66 +1,40 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
+    <main className={styles.main}>
+      <section className={styles.hero}>
+        <p className={styles.eyebrow}>Cena7</p>
+        <h1 className={styles.title}>Landing em construção</h1>
+        <p className={styles.lead}>
+          Estrutura pronta para evoluir em um site rápido, acessível e com
+          medição ativa. Personalize a partir deste ponto com o conteúdo final.
+        </p>
+      </section>
+
+      <section className={styles.grid}>
+        <article className={styles.card}>
+          <h2>Performance e app router</h2>
           <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+            Next.js 16 com React 19, React Compiler e tipagem estrita para
+            entregas rápidas e seguras.
           </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        </article>
+        <article className={styles.card}>
+          <h2>SEO pronto</h2>
+          <p>
+            Metadados padrão, sitemap e robots configuráveis via
+            NEXT_PUBLIC_SITE_URL.
+          </p>
+        </article>
+        <article className={styles.card}>
+          <h2>Medição</h2>
+          <p>
+            Google Analytics habilitável via NEXT_PUBLIC_GA_ID, carregado apenas
+            quando a chave é informada.
+          </p>
+        </article>
+      </section>
+    </main>
   );
 }

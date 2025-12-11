@@ -1,5 +1,6 @@
- "use client";
+"use client";
 
+import { circOut, motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -18,6 +19,25 @@ const trackWhatsAppClick = () => {
 
 const handleWhatsAppClick = () => {
   trackWhatsAppClick();
+};
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: circOut },
+  },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5 } },
+};
+
+const staggerChildren = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } },
 };
 
 const promiseBand = [
@@ -71,9 +91,20 @@ const testimonials = [
 export default function Home() {
   return (
     <main className={styles.page}>
-      <section className={styles.hero} id="inicio">
+      <motion.section
+        className={styles.hero}
+        id="inicio"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        variants={fadeInUp}
+      >
         <div className={styles.heroContent}>
-          <div className={styles.heroCopy}>
+          <motion.div
+            className={styles.heroCopy}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+          >
             <p className={styles.eyebrow}>Bem-vindo</p>
             <h1>
               Mais do que espaços que fazem sentido, entregamos ambientes que
@@ -84,26 +115,37 @@ export default function Home() {
               acabamento premium e montagem profissional em São José e região.
             </p>
             <div className={styles.heroActions}>
-              <a
+              <motion.a
                 className={styles.primaryCta}
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={handleWhatsAppClick}
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
               >
                 Falar no WhatsApp
-              </a>
-              <a className={styles.secondaryCta} href="#portfolio">
+              </motion.a>
+              <motion.a
+                className={styles.secondaryCta}
+                href="#portfolio"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 Ver portfólio
-              </a>
+              </motion.a>
             </div>
             <ul className={styles.heroPoints}>
               <li>Projeto sob medida com aprovação rápida.</li>
               <li>Proteção total do ambiente na montagem.</li>
               <li>Garantia de 5 anos em cada entrega.</li>
             </ul>
-          </div>
-          <div className={styles.heroLogoCard}>
+          </motion.div>
+          <motion.div
+            className={styles.heroLogoCard}
+            variants={fadeIn}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
             <div className={styles.logoWrapper}>
               <Image
                 src="/logo.png"
@@ -113,60 +155,103 @@ export default function Home() {
                 priority
               />
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section className={styles.promiseBand} aria-label="Vantagens principais">
+      <motion.section
+        className={styles.promiseBand}
+        aria-label="Vantagens principais"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={staggerChildren}
+      >
         <div className={styles.promiseInner}>
           {promiseBand.map((item) => (
-            <div key={item.title} className={styles.promiseItem}>
+            <motion.div
+              key={item.title}
+              className={styles.promiseItem}
+              variants={fadeInUp}
+            >
               <p className={styles.promiseTitle}>{item.title}</p>
               <p className={styles.promiseText}>{item.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section className={styles.features} id="diferenciais">
+      <motion.section
+        className={styles.features}
+        id="diferenciais"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <header className={styles.sectionHeader}>
           <p className={styles.eyebrow}>Compromisso com prazo e qualidade</p>
           <h2>Entrega no tempo certo, com qualidade e vantagens reais</h2>
         </header>
         <div className={styles.featureGrid}>
           {featureCards.map((card) => (
-            <article key={card.title} className={styles.featureCard}>
+            <motion.article
+              key={card.title}
+              className={styles.featureCard}
+              variants={fadeInUp}
+            >
               <h3>{card.title}</h3>
               <p>{card.text}</p>
-            </article>
+            </motion.article>
           ))}
         </div>
-      </section>
+      </motion.section>
 
-      <section className={styles.portfolio} id="portfolio">
+      <motion.section
+        className={styles.portfolio}
+        id="portfolio"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <header className={styles.sectionHeader}>
           <p className={styles.eyebrow}>Portfólio</p>
           <h2>Esses não são apenas móveis, são sonhos que realizamos</h2>
         </header>
         <div className={styles.portfolioShowcase}>
           {portfolioItems.map((item) => (
-            <div key={item.label} className={styles.portfolioCard}>
+            <motion.div
+              key={item.label}
+              className={styles.portfolioCard}
+              variants={fadeInUp}
+              whileHover={{ y: -4 }}
+            >
               <span>{item.label}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
-        <a
+        <motion.a
           className={styles.primaryCta}
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleWhatsAppClick}
+          whileHover={{ scale: 1.02, y: -2 }}
+          whileTap={{ scale: 0.98 }}
         >
           Quero um móvel de qualidade
-        </a>
-      </section>
+        </motion.a>
+      </motion.section>
 
-      <section className={styles.about} id="sobre">
+      <motion.section
+        className={styles.about}
+        id="sobre"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <div className={styles.aboutText}>
           <p className={styles.eyebrow}>Sobre nós</p>
           <h2>Da nossa casa para sua casa</h2>
@@ -181,30 +266,48 @@ export default function Home() {
             atendimento próximo, montagem profissional e garantia estendida.
           </p>
           <div className={styles.heroActions}>
-            <a
+            <motion.a
               className={styles.primaryCta}
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWhatsAppClick}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               Quero falar com um especialista
-            </a>
+            </motion.a>
           </div>
         </div>
-        <div className={styles.aboutMedia} aria-hidden>
+        <motion.div
+          className={styles.aboutMedia}
+          aria-hidden
+          variants={fadeInUp}
+          transition={{ duration: 0.6 }}
+        >
           <div className={styles.photoPlaceholder}>Espaço para fotos reais</div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      <section className={styles.testimonials} id="depoimentos">
+      <motion.section
+        className={styles.testimonials}
+        id="depoimentos"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={staggerChildren}
+      >
         <header className={styles.sectionHeader}>
           <p className={styles.eyebrow}>Depoimentos</p>
           <h2>O que dizem nossos clientes</h2>
         </header>
         <div className={styles.testimonialGrid}>
           {testimonials.map((item) => (
-            <article key={item.name} className={styles.testimonialCard}>
+            <motion.article
+              key={item.name}
+              className={styles.testimonialCard}
+              variants={fadeInUp}
+            >
               <div className={styles.testimonialHead}>
                 <div>
                   <p className={styles.testimonialName}>{item.name}</p>
@@ -215,17 +318,29 @@ export default function Home() {
                 </div>
               </div>
               <p className={styles.testimonialQuote}>&quot;{item.quote}&quot;</p>
-            </article>
+            </motion.article>
           ))}
         </div>
         <div className={styles.testimonialActions}>
-          <a className={styles.secondaryCta} href="#contato">
+          <motion.a
+            className={styles.secondaryCta}
+            href="#contato"
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+          >
             Ver todas as avaliações
-          </a>
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
 
-      <section className={styles.finalCta} id="contato">
+      <motion.section
+        className={styles.finalCta}
+        id="contato"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-120px" }}
+        variants={fadeInUp}
+      >
         <div className={styles.finalCopy}>
           <h2>Pronto para transformar seu ambiente?</h2>
           <p>
@@ -233,18 +348,25 @@ export default function Home() {
             claras e entrega combinada.
           </p>
           <div className={styles.heroActions}>
-            <a
+            <motion.a
               className={styles.primaryCta}
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWhatsAppClick}
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
             >
               Falar com um especialista
-            </a>
-            <a className={styles.secondaryCta} href="#portfolio">
+            </motion.a>
+            <motion.a
+              className={styles.secondaryCta}
+              href="#portfolio"
+              whileHover={{ scale: 1.02, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+            >
               Ver projetos
-            </a>
+            </motion.a>
           </div>
         </div>
         <div className={styles.finalInfo}>
@@ -253,7 +375,7 @@ export default function Home() {
           <p className={styles.finalLabel}>Atendimento</p>
           <p className={styles.finalValue}>São José - SC e região</p>
         </div>
-      </section>
+      </motion.section>
     </main>
   );
 }
